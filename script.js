@@ -17,7 +17,7 @@ let _token = hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = 'cbffa8440e094e8d9771b39aed0d7802';
+const clientId = '2102d6bf57714410a8f50dd1ccadc571';
 const redirectUri = 'https://kaleb.win';
 const scopes = [
   'streaming',

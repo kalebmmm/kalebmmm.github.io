@@ -71,7 +71,7 @@ function play(device_id) {
   $.ajax({
     url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
     type: "PUT",
-    data: '{"uris": ["spotify:playlist:5xor84j9rjknJ9v8oQS3Tv"]}',
+    data: '{"uris": ["spotify:track:66TRwr5uJwPt15mfFkzhbi"]}',
     beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
     success: function (data) {
       console.log(data)
@@ -85,7 +85,27 @@ function getPlaylists() {
     type: "GET",
     beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
     success: function (data) {
-      console.log(data)
+        let items = data.items;
+
+        for (let i = 0; i < items.length; i++) {
+          let item = items[i];
+
+          if (item.name === "Church") {
+            getTracks(item.id)
+            break;
+          }
+        }
     }
   });
 }
+
+function getTracks(playlist) {
+  $.ajax({
+    url: `https://api.spotify.com/v1/playlists/${playlist}/tracks`,
+    type: "GET",
+    beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
+    success: function (data) {
+        console.log(data)
+    }
+  });
+};

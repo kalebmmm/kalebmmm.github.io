@@ -1,14 +1,14 @@
 // Get the hash of the url
 const hash = window.location.hash
-.substring(1)
-.split('&')
-.reduce(function (initial, item) {
-  if (item) {
-    var parts = item.split('=');
-    initial[parts[0]] = decodeURIComponent(parts[1]);
-  }
-  return initial;
-}, {});
+  .substring(1)
+  .split('&')
+  .reduce(function (initial, item) {
+    if (item) {
+      var parts = item.split('=');
+      initial[parts[0]] = decodeURIComponent(parts[1]);
+    }
+    return initial;
+  }, {});
 window.location.hash = '';
 
 // Set token
@@ -56,10 +56,10 @@ window.onSpotifyPlayerAPIReady = () => {
   // Ready
   player.on('ready', data => {
     console.log('Ready with Device ID', data.device_id);
-    
+
     getPlaylists();
     // // Play a track using our new device ID
-    // play(data.device_id);
+    play(data.device_id);
   });
 
   // Connect to the player!
@@ -69,13 +69,13 @@ window.onSpotifyPlayerAPIReady = () => {
 // Play a specified track on the Web Playback SDK's device ID
 function play(device_id) {
   $.ajax({
-   url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
-   type: "PUT",
-   data: '{"uris": ["spotify:track:5ya2gsaIhTkAuWYEMB0nw5"]}',
-   beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
-   success: function(data) { 
-     console.log(data)
-   }
+    url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
+    type: "PUT",
+    data: '{"uris": ["spotify:playlist:5xor84j9rjknJ9v8oQS3Tv"]}',
+    beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
+    success: function (data) {
+      console.log(data)
+    }
   });
 }
 
@@ -83,8 +83,8 @@ function getPlaylists() {
   $.ajax({
     url: "https://api.spotify.com/v1/me/playlists",
     type: "GET",
-    beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
-    success: function(data) {
+    beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
+    success: function (data) {
       console.log(data)
     }
   });

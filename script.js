@@ -22,7 +22,9 @@ const redirectUri = 'https://kaleb.win';
 const scopes = [
   'streaming',
   'user-read-private',
-  'user-modify-playback-state'
+  'user-modify-playback-state',
+  'playlist-read-collaborative',
+  'playlist-read-private'
 ];
 
 // If there is no token, redirect to Spotify authorization
@@ -55,8 +57,9 @@ window.onSpotifyPlayerAPIReady = () => {
   player.on('ready', data => {
     console.log('Ready with Device ID', data.device_id);
     
-    // Play a track using our new device ID
-    play(data.device_id);
+    getPlaylists();
+    // // Play a track using our new device ID
+    // play(data.device_id);
   });
 
   // Connect to the player!
@@ -73,5 +76,16 @@ function play(device_id) {
    success: function(data) { 
      console.log(data)
    }
+  });
+}
+
+function getPlaylists() {
+  $.ajax({
+    url: "https://api.spotify.com/v1/me/playlists",
+    type: "GET",
+    beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + _token );},
+    success: function(data) {
+      console.log(data)
+    }
   });
 }

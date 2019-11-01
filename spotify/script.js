@@ -17,8 +17,8 @@ let _token = hash.access_token;
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = '1bd0996c3c58464dbaea3a8db24c1a59';
-const redirectUri = 'https://kaleb.win/spotify/index.html';
+const clientId = '2102d6bf57714410a8f50dd1ccadc571';
+const redirectUri = 'https://spotify-web-playback.glitch.me';
 const scopes = [
   'streaming',
   'user-read-birthdate',

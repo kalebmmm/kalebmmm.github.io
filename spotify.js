@@ -41,11 +41,11 @@ window.onSpotifyPlayerAPIReady = () => {
     getOAuthToken: cb => { cb(_token); }
   });
 
-  // Error handling
-  player.on('initialization_error', e => console.error(e));
-  player.on('authentication_error', e => console.error(e));
-  player.on('account_error', e => console.error(e));
-  player.on('playback_error', e => console.error(e));
+  // Error handling - who cares lol
+  // player.on('initialization_error', e => console.error(e));
+  // player.on('authentication_error', e => console.error(e));
+  // player.on('account_error', e => console.error(e));
+  // player.on('playback_error', e => console.error(e));
 
   // Playback status updates
   player.on('player_state_changed', state => {
@@ -120,8 +120,6 @@ function startPlayer(endTime) {
   let songs = list.map(song => new String(song.uri));
   let uris = { "uris": songs };
   play(device_id, uris);
-
-
 
   let tbody = $('#playlist_display tbody');
   tbody.empty();

@@ -98,7 +98,6 @@ function getTracks(playlist) {
     beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
     success: function (data) {
       tracks = data.items.map(item => item.track);
-      console.log(tracks);
     }
   });
 };

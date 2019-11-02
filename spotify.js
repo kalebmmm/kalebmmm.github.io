@@ -108,7 +108,9 @@ function loadPlaylist(playlist) {
 }
 
 function startPlayer(endTime) {
+  shuffle(tracks);
   let list = bestList(tracks, endTime - new Date());
+  shuffle(list);
 
   let length = list.map(song => song.duration_ms).reduce((a, b) => a + b)
   console.log('Real end time: ' + (new Date().getTime() + length));
@@ -131,4 +133,8 @@ function startPlayer(endTime) {
   }
 
   $("#playlist_display").removeClass('hidden');
+}
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
 }

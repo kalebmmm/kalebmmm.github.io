@@ -1,0 +1,20 @@
+body {
+    max-width: 650px !important;
+    margin: auto;
+}
+
+#current-track-img {
+    max-height: 8em;
+}
+
+.card {
+    margin-top: 1.5em;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+.hidden {
+    display: none;
+}

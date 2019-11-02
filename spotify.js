@@ -37,7 +37,7 @@ if (!_token)
 
 window.onSpotifyPlayerAPIReady = () => {
   const player = new Spotify.Player({
-    name: 'Church Player',
+    name: 'Timed Player',
     getOAuthToken: cb => { cb(_token); }
   });
 

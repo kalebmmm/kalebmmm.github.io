@@ -20,6 +20,7 @@ const authEndpoint = 'https://accounts.spotify.com/authorize';
 
 // Replace with your app's client ID, redirect URI and desired scopes
 const clientId = 'cbffa8440e094e8d9771b39aed0d7802';
+// const redirectUri = 'https://kaleb.win';
 const redirectUri = 'https://kaleb.win';
 const scopes = [
   'streaming',
@@ -82,11 +83,14 @@ function getPlaylists() {
     beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', 'Bearer ' + _token); },
     success: function (data) {
       let items = data.items;
+      let newList = $('<select id="playlist" class="custom-select" required>');
 
       for (let i = 0; i < items.length; i++) {
         let item = items[i];
-        $('#playlist').append(`<option value="${item.id}">${item.name}</option>`);
+        newList.append(`<option value="${item.id}">${item.name}</option>`);
       }
+
+      $('#playlist').replaceWith(newList);
     }
   });
 }

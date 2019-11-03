@@ -1,4 +1,4 @@
-window.on('ready', event => {
+$(document).ready(function() {
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     || /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
     alert("Your browser may not be supported! Please use Chrome or Firefox on a Mac/Windows/Linux PC")

@@ -9,6 +9,7 @@ const hash = window.location.hash
     }
     return initial;
   }, {});
+
 window.location.hash = '';
 
 // Set token
@@ -58,6 +59,7 @@ window.onSpotifyPlayerAPIReady = () => {
 
   // Ready
   player.on('ready', data => {
+    alert('ready!');
     device_id = data.device_id;
     console.log('Ready with Device ID', data.device_id);
     getPlaylists();
